@@ -28,176 +28,84 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.room = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.row = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.seat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.lkBtn = new System.Windows.Forms.Button();
+            this.conDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // lkBtn
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.fio,
-            this.room,
-            this.row,
-            this.seat});
-            this.dataGridView1.Location = new System.Drawing.Point(12, 12);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(776, 269);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.lkBtn.BackgroundImage = global::Filarmony.Properties.Resources._1675895563_grizly_club_p_lichnii_kabinet_klipart_14;
+            this.lkBtn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.lkBtn.Location = new System.Drawing.Point(765, 14);
+            this.lkBtn.Name = "lkBtn";
+            this.lkBtn.Size = new System.Drawing.Size(65, 61);
+            this.lkBtn.TabIndex = 3;
+            this.lkBtn.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // conDatePicker
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(598, 287);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(190, 151);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Продажа билета";
-            this.button1.UseVisualStyleBackColor = false;
+            this.conDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.conDatePicker.Location = new System.Drawing.Point(12, 34);
+            this.conDatePicker.MaxDate = new System.DateTime(2025, 12, 31, 0, 0, 0, 0);
+            this.conDatePicker.MinDate = new System.DateTime(2020, 1, 1, 0, 0, 0, 0);
+            this.conDatePicker.Name = "conDatePicker";
+            this.conDatePicker.Size = new System.Drawing.Size(232, 30);
+            this.conDatePicker.TabIndex = 4;
+            this.conDatePicker.CloseUp += new System.EventHandler(this.conDatePicker_CloseUp);
             // 
-            // textBox1
+            // listView1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(55, 338);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 100);
-            this.textBox1.TabIndex = 2;
+            this.listView1.Alignment = System.Windows.Forms.ListViewAlignment.Left;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.listView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.listView1.FullRowSelect = true;
+            this.listView1.Location = new System.Drawing.Point(12, 95);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.ShowItemToolTips = true;
+            this.listView1.Size = new System.Drawing.Size(818, 635);
+            this.listView1.TabIndex = 5;
+            this.listView1.TileSize = new System.Drawing.Size(700, 200);
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Tile;
+            this.listView1.ItemActivate += new System.EventHandler(this.listView1_ItemActivate);
             // 
-            // label1
+            // columnHeader3
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.Location = new System.Drawing.Point(71, 299);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(71, 36);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Ряд";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // id
-            // 
-            this.id.HeaderText = "Номер заказа";
-            this.id.MinimumWidth = 6;
-            this.id.Name = "id";
-            this.id.Width = 125;
-            // 
-            // fio
-            // 
-            this.fio.HeaderText = "ФИО";
-            this.fio.MinimumWidth = 6;
-            this.fio.Name = "fio";
-            this.fio.Width = 125;
-            // 
-            // room
-            // 
-            this.room.HeaderText = "Зал";
-            this.room.MinimumWidth = 6;
-            this.room.Name = "room";
-            this.room.Width = 125;
-            // 
-            // row
-            // 
-            this.row.HeaderText = "Ряд";
-            this.row.MinimumWidth = 6;
-            this.row.Name = "row";
-            this.row.Width = 125;
-            // 
-            // seat
-            // 
-            this.seat.HeaderText = "Место";
-            this.seat.MinimumWidth = 6;
-            this.seat.Name = "seat";
-            this.seat.Width = 125;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.Location = new System.Drawing.Point(210, 299);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 36);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Место";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox2.Location = new System.Drawing.Point(213, 338);
-            this.textBox2.Multiline = true;
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 100);
-            this.textBox2.TabIndex = 5;
-            // 
-            // button2
-            // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(402, 287);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(190, 151);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "Проверка билета";
-            this.button2.UseVisualStyleBackColor = false;
+            this.columnHeader3.Width = 100;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.dataGridView1);
+            this.ClientSize = new System.Drawing.Size(842, 742);
+            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.conDatePicker);
+            this.Controls.Add(this.lkBtn);
             this.Name = "Form1";
-            this.Text = "Кассир";
+            this.Text = "Покупатель";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn fio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn room;
-        private System.Windows.Forms.DataGridViewTextBoxColumn row;
-        private System.Windows.Forms.DataGridViewTextBoxColumn seat;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button lkBtn;
+        private System.Windows.Forms.DateTimePicker conDatePicker;
+        private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
     }
 }
 
