@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -17,7 +18,6 @@ namespace Filarmony
         MySqlDataReader list;
         string openedTable;
         List<string> columnNames = new List<string>();
-
         public Form2()
         {
             InitializeComponent();
@@ -31,6 +31,7 @@ namespace Filarmony
             string query = "SELECT * FROM " + table;
             list = upload.Upload(query);
 
+            if (list == null) return;
             while (list.Read())
             {
                 List<string> cell = new List<string>();
@@ -57,11 +58,10 @@ namespace Filarmony
             }
         }
         /// <summary>
-        /// Вызов таблицы room
+        /// Переключение элементов взаимодействия с таблицей
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void button1_Click(object sender, EventArgs e)
+        /// <param name="table"></param>
+        public void TableSwitch(string table)
         {
             bookingTable.Visible = false;
             bookingTable.Enabled = false;
@@ -69,7 +69,103 @@ namespace Filarmony
             ticketTable.Enabled = false;
             customerBox.Visible = false;
             customerBox.Enabled = false;
+            roomBox.Visible = false;
+            roomBox.Enabled = false;
+            requestBox.Visible = false;
+            requestBox.Enabled = false;
+            concertBox.Visible = false;
+            concertBox.Enabled = false;
+            contractBox.Visible = false;
+            contractBox.Enabled = false;
+            lectureBox.Enabled = false;
+            lectureBox.Visible = false;
+            markBox.Visible = false;
+            markBox.Enabled = false;
+            statusBox.Visible = false;
+            statusBox.Enabled = false;
+            promoBox.Enabled = false;
+            promoBox.Visible = false;
 
+            mainAddBtn.Enabled = true;
+            mainChgBtn.Enabled = true;
+            mainDelBtn.Enabled = true;
+
+            chgRowBooking.Visible = chgRowBooking.Enabled = addRowBooking.Visible = addRowBooking.Enabled = false;
+            addRow.Visible = addRow.Enabled = changebtn.Visible = changebtn.Enabled = false;
+            custChgBtn.Visible = custChgBtn.Enabled = custAddBtn.Visible = custAddBtn.Enabled = false;
+            roomAddBtn.Enabled = roomAddBtn.Visible = roomChgBtn.Visible = roomChgBtn.Visible = false;
+            conAddBtn.Enabled = conAddBtn.Visible = conChgBtn.Visible = conChgBtn.Visible = false;
+            contAddBtn.Enabled = contAddBtn.Visible = contChgBtn.Visible = contChgBtn.Visible = false;
+            lectAddBtn.Enabled = lectAddBtn.Visible = lectChgBtn.Visible = lectChgBtn.Visible = false;
+            markAddBtn.Enabled = markAddBtn.Visible = markChgBtn.Visible = markChgBtn.Visible = false;
+            statusAddBtn.Enabled = statusAddBtn.Visible = statusChgBtn.Visible = statusChgBtn.Visible = false;
+            promoAddBtn.Enabled = promoAddBtn.Visible = promoChgBtn.Visible = promoChgBtn.Visible = false;
+
+            switch (table)
+            {
+                case "booking":
+                    bookingTable.Visible = true;
+                    bookingTable.Enabled = true;
+                    break;
+                case "ticket":
+                    ticketTable.Visible = true;
+                    ticketTable.Enabled = true;
+                    break;
+                case "customer":
+                    customerBox.Visible = true;
+                    customerBox.Enabled = true;
+                    break;
+                case "room":
+                    roomBox.Visible = true;
+                    roomBox.Enabled = true;
+                    break;
+                case "concert":
+                    concertBox.Visible = true;
+                    concertBox.Enabled = true;
+                    break;
+                case "contract":
+                    contractBox.Visible = true;
+                    contractBox.Enabled = true;
+                    break;
+                case "lecture":
+                    lectureBox.Enabled = true;
+                    lectureBox.Visible = true;
+                    break;
+                case "mark":
+                    markBox.Enabled = true;
+                    markBox.Visible = true;
+                    break;
+                case "status":
+                    statusBox.Enabled = true;
+                    statusBox.Visible = true;
+                    break;
+                case "promocode":
+                    promoBox.Enabled = true;
+                    promoBox.Visible = true;
+                    break;
+                case "request":
+                    requestBox.Visible = true;
+                    requestBox.Enabled = true;
+                    break;
+                case "back":
+                    this.Height = 300;
+                    break;
+                case "addToChg":
+                    break;
+                default:
+                    MessageBox.Show("Управление таблицей недоступно!");
+                    break;
+            }
+        }
+        /// <summary>
+        /// Вызов таблицы room
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void button1_Click(object sender, EventArgs e)
+        {
+            TableSwitch("back");
+            
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("id", "ID");
             dataGridView1.Columns.Add("name", "Name");
@@ -79,26 +175,27 @@ namespace Filarmony
 
             Reload("room", columnNames);
 
-            roomBox.Visible = true;
-            roomBox.Enabled = true;
-
             dataGridView1.Visible = true;
 
-            label16.Visible = true;
-
-            roomAddfieldBtn.Visible = true;
-            roomChgfieldBtn.Visible = true;
-            roomDelBtn.Visible = true;
         }
 
         private void button6_Click(object sender, EventArgs e)
         {
+            TableSwitch("back");
 
-        }
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("id", "ID");
+            dataGridView1.Columns.Add("performer", "Performer");
+            dataGridView1.Columns.Add("event_date", "Event date");
+            dataGridView1.Columns.Add("price", "Price");
+            dataGridView1.Columns.Add("requisites", "Requisites");
 
-        private void Form2_Load(object sender, EventArgs e)
-        {
-            
+            columnNames = new List<string> { "id", "performer", "event_date", "price", "requisites"};
+
+            Reload("contract", columnNames);
+
+            dataGridView1.Visible = true;
+
         }
 
         /// <summary>
@@ -108,11 +205,8 @@ namespace Filarmony
         /// <param name="e"></param>
         private void button5_Click(object sender, EventArgs e)
         {
-            bookingTable.Visible = false;
-            bookingTable.Enabled = false;
-            ticketTable.Visible = false;
-            ticketTable.Enabled = false;
-
+            TableSwitch("back");
+            
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("id", "ID");
             dataGridView1.Columns.Add("status_id", "Status ID");
@@ -124,16 +218,10 @@ namespace Filarmony
 
             Reload("customer", columnNames);
 
-            customerBox.Visible = true;
-            customerBox.Enabled = true;
+            //TableSwitch(openedTable);
 
             dataGridView1.Visible = true;
 
-            label14.Visible = true;
-
-            custChgfieldBtn.Visible = true;
-            custDelfieldBtn.Visible = true;
-            custAddfieldBtn.Visible = true;
         }
 
         /// <summary>
@@ -143,12 +231,7 @@ namespace Filarmony
         /// <param name="e"></param>
         private void button2_Click(object sender, EventArgs e)
         {
-            bookingTable.Visible = false;
-            bookingTable.Enabled = false;
-            customerBox.Visible = false;
-            customerBox.Enabled = false;
-            roomBox.Visible = false;
-            roomBox.Enabled = false;
+            TableSwitch("back");
 
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("id", "ID");
@@ -162,17 +245,10 @@ namespace Filarmony
             columnNames = new List<string> { "id", "concert_id", "room_id", "row_num", "seat_num", "price", "sold"};
 
             Reload("ticket", columnNames);
-
-            ticketTable.Visible = true;
-            ticketTable.Enabled = true;
+            //TableSwitch(openedTable);
 
             dataGridView1.Visible = true;
 
-            label2.Visible = true;
-
-            changeRow.Visible = true;
-            delRow.Visible = true;
-            addElem.Visible = true;
         }
 
         private void label3_Click(object sender, EventArgs e)
@@ -204,28 +280,6 @@ namespace Filarmony
                 roomPos.Items.Add(item);
 
             label8.Text = "";
-
-            changebtn.Visible = false;
-            changeBack.Visible = false;
-
-            label4.Visible = true;
-            label5.Visible = true;
-            label6.Visible = true;
-            label7.Visible = true;
-            label8.Visible = true;
-            label9.Visible = true;
-
-            concertPos.Visible = true;
-            roomPos.Visible = true;
-
-            rowPos.Visible = true;
-            seatPos.Visible = true;
-            pricePos.Visible = true;
-
-            checkBox1.Visible = true;
-
-            addRow.Visible = true;
-            addBack.Visible = true;
         }
         /// <summary>
         /// Получение списка id из таблицы
@@ -342,7 +396,8 @@ namespace Filarmony
             else
             {
                 Query upload = new Query();
-                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (concert_id, room_id, row_num, seat_num, price, sold) VALUES ({newString[0]}, {newString[1]}, {newString[2]}, {newString[3]}, {newString[4]}, {newString[5]})");
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (concert_id, room_id, row_num, seat_num, price, sold) " +
+                    $"VALUES ({newString[0]}, {newString[1]}, {newString[2]}, {newString[3]}, {newString[4]}, {newString[5]})");
                 Reload(openedTable, columnNames);
                 label8.ForeColor = Color.Green;
                 label8.Text = "ДОБАВЛЕНО!";
@@ -373,7 +428,6 @@ namespace Filarmony
             checkBox1.Visible = false;
 
             addRow.Visible = false;
-            addBack.Visible = false;
         }
 
         private void delRow_Click(object sender, EventArgs e)
@@ -418,7 +472,6 @@ namespace Filarmony
             label8.Text = "";
 
             addRow.Visible = false;
-            addBack.Visible = false;
 
             label4.Visible = true;
             label5.Visible = true;
@@ -437,7 +490,6 @@ namespace Filarmony
             checkBox1.Visible = true;
 
             changebtn.Visible = true;
-            changeBack.Visible = true;
         }
 
         private void changeBack_Click(object sender, EventArgs e)
@@ -461,7 +513,6 @@ namespace Filarmony
             checkBox1.Visible = false;
 
             changebtn.Visible = false;
-            changeBack.Visible = false;
 
             concertPos.Items.Clear();
             roomPos.Items.Clear();
@@ -483,7 +534,9 @@ namespace Filarmony
             else
             {
                 Query upload = new Query();
-                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET concert_id = {newString[0]}, room_id = {newString[1]}, row_num = {newString[2]}, seat_num = {newString[3]}, price = {newString[4]}, sold = {newString[5]} WHERE id = {newString[6]}");
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} " +
+                    $"SET concert_id = {newString[0]}, room_id = {newString[1]}, row_num = {newString[2]}, seat_num = {newString[3]}, price = {newString[4]}, sold = {newString[5]}" +
+                    $" WHERE id = {newString[6]}");
                 Reload(openedTable, columnNames);
                 label8.ForeColor = Color.DarkOrange;
                 label8.Text = "ИЗМЕНЕННО!";
@@ -497,9 +550,8 @@ namespace Filarmony
 
         private void button4_Click(object sender, EventArgs e)
         {
-            ticketTable.Visible = false;
-            ticketTable.Enabled = false;
-
+            TableSwitch("back");
+            
             dataGridView1.Columns.Clear();
             dataGridView1.Columns.Add("id", "ID");
             dataGridView1.Columns.Add("ticket_id", "Ticket ID");
@@ -509,17 +561,12 @@ namespace Filarmony
             columnNames = new List<string> {"id", "ticket_id", "customer_id", "booking_date"};
 
             Reload("booking", columnNames);
+            
+            mainAddBtn.Enabled = true;
+            mainChgBtn.Enabled = true;
+            mainBackBtn.Enabled = true;
 
             dataGridView1.Visible = true;
-
-            bookingTable.Visible = true;
-            bookingTable.Enabled = true;
-
-            label10.Visible = true;
-
-            addBooking.Visible = true;
-            delBooking.Visible = true;
-            cngBooking.Visible = true;
         }
 
         private void button10_Click(object sender, EventArgs e)
@@ -558,7 +605,6 @@ namespace Filarmony
             comboBox1.Visible = true;
             comboBox2.Visible = true;
             dateTimePicker1.Visible = true;
-            backBooking.Visible = true;
         }
         /// <summary>
         /// Добавление записи в таблицу booking
@@ -661,7 +707,6 @@ namespace Filarmony
             comboBox1.Visible = true;
             comboBox2.Visible = true;
             dateTimePicker1.Visible = true;
-            backBooking.Visible = true;
         }
 
         private void delBooking_Click(object sender, EventArgs e)
@@ -681,14 +726,14 @@ namespace Filarmony
         private void request_Click(object sender, EventArgs e)
         {
             dataGridView1.Visible = true;
-
-            requestBox.Visible = true;
-            ticketTable.Visible = false;
-            bookingTable.Visible = false;
-            customerBox.Visible = false;
-            roomBox.Visible = false;
+            this.Height = 650;
+            TableSwitch("request");
         }
-
+        /// <summary>
+        /// Запрос информации о купленных билетах
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buyTicketInfo_Click(object sender, EventArgs e)
         {
             dataGridView1.Columns.Clear();
@@ -700,7 +745,8 @@ namespace Filarmony
 
             columnNames = new List<string> { "id", "fio", "name", "row_num", "seat_num" };
 
-            string query = $"SELECT ticket.id, customer.fio, room.name, ticket.row_num, ticket.seat_num FROM ticket, customer, room, booking WHERE booking.ticket_id = ticket.id AND ticket.room_id = room.id AND booking.customer_id = customer.id GROUP BY ticket.id;";
+            string query = $"SELECT ticket.id, customer.fio, room.name, ticket.row_num, ticket.seat_num FROM ticket " +
+                $"JOIN booking ON booking.ticket_id = ticket.id JOIN customer ON booking.customer_id = customer.id JOIN room ON ticket.room_id = room.id GROUP BY ticket.id";
             Query upload = new Query();
             MySqlDataReader sqList = upload.Upload(query);
             ReloadRequest(query, columnNames);
@@ -717,12 +763,17 @@ namespace Filarmony
             columnNames = new List<string> { "id", "name", "row_num", "seat_num" };
 
 
-            string query = $"SELECT room.id, SUM(ticket.price) AS Сумма FROM ticket, booking, room WHERE ticket.id = booking.ticket_id AND booking.booking_date < '2023-05-01 00:00:00' AND room.id = ticket.room_idnGROUP BY room.idnORDER BY SUM(ticket.price) DESC;";
+            string query = $"SELECT room.id, SUM(ticket.price) AS Сумма FROM ticket, booking, room " +
+                $"WHERE ticket.id = booking.ticket_id AND booking.booking_date < '2023-05-01 00:00:00' AND room.id = ticket.room_idnGROUP BY room.idnORDER BY SUM(ticket.price) DESC;";
             Query upload = new Query();
             MySqlDataReader sqList = upload.Upload(query);
             ReloadRequest(query, columnNames);
         }
-
+        /// <summary>
+        /// Запрос выручки по каждому залу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void button7_Click_1(object sender, EventArgs e)
         {
             dataGridView1.Columns.Clear();
@@ -731,7 +782,8 @@ namespace Filarmony
 
             columnNames = new List<string> { "name", "Сумма" };
 
-            string query = $"SELECT room.name, SUM(ticket.price) AS Сумма FROM ticket, booking, room WHERE ticket.id = booking.ticket_id AND room.id = ticket.room_id GROUP BY room.id ORDER BY SUM(ticket.price) DESC;";
+            string query = $"SELECT room.name, SUM(ticket.price) AS Сумма FROM ticket, booking, room " +
+                $"WHERE ticket.id = booking.ticket_id AND room.id = ticket.room_id GROUP BY room.id ORDER BY SUM(ticket.price) DESC;";
             Query upload = new Query();
             MySqlDataReader sqList = upload.Upload(query);
             ReloadRequest(query, columnNames);
@@ -753,7 +805,7 @@ namespace Filarmony
             label15.Text = "";
             label15.Visible = true;
 
-            statusBox.Items.Clear();
+            custStatusBox.Items.Clear();
 
             List<string> list = new List<string>();
             list = GetIDList("status");
@@ -768,11 +820,11 @@ namespace Filarmony
 
             custChgBtn.Visible = false;
             custAddBtn.Visible = true;
-            statusBox.Visible = true;
+            custStatusBox.Visible = true;
             fioBox.Visible = true;
             emailBox.Visible = true;
             phoneBox.Visible = true;
-            custBackBtn.Visible = true;
+            mainBackBtn.Visible = true;
         }
         /// <summary>
         /// Добавление полей для изменения записи в customer
@@ -783,35 +835,20 @@ namespace Filarmony
         {
             this.Height = 659;
 
-            statusBox.Items.Clear();
+            custStatusBox.Items.Clear();
 
             List<string> list = new List<string>();
             list = GetIDList("status");
 
             foreach (string item in list)
-                statusBox.Items.Add(item);
-            statusBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                custStatusBox.Items.Add(item);
+            custStatusBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
 
             fioBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
             emailBox.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
             phoneBox.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
 
             label15.Text = "";
-
-            custAddBtn.Visible = false;
-            custChgBtn.Visible = true;
-
-            statusLab.Visible = true;
-            fioLab.Visible = true;
-            emailLab.Visible = true;
-            phoneLab.Visible = true;
-            label15.Visible = true;
-
-            statusBox.Visible = true;
-            fioBox.Visible = true;
-            emailBox.Visible = true;
-            phoneBox.Visible = true;
-            custBackBtn.Visible = true;
         }
         /// <summary>
         /// Удаление выделенного поля в customer
@@ -840,7 +877,7 @@ namespace Filarmony
             emailLab.Visible = false;
             phoneLab.Visible = false;
 
-            statusBox.Visible = false;
+            custStatusBox.Visible = false;
             fioBox.Visible = false;
             emailBox.Visible = false;
             phoneBox.Visible = false;
@@ -848,7 +885,7 @@ namespace Filarmony
             custAddBtn.Visible = false;
             custChgBtn.Visible = false;
 
-            statusBox.Items.Clear();
+            custStatusBox.Items.Clear();
         }
         /// <summary>
         /// Добавление записи в customer
@@ -857,7 +894,7 @@ namespace Filarmony
         /// <param name="e"></param>
         private void custAddBtn_Click(object sender, EventArgs e)
         {
-            string[] newString = { statusBox.Text, fioBox.Text, emailBox.Text, phoneBox.Text };
+            string[] newString = { custStatusBox.Text, fioBox.Text, emailBox.Text, phoneBox.Text };
             bool stringNull = true;
             foreach (string str in newString)
                 if (str == "" || str == "False") stringNull = stringNull && true;
@@ -884,7 +921,7 @@ namespace Filarmony
         /// <param name="e"></param>
         private void custChgBtn_Click(object sender, EventArgs e)
         {
-            string[] newString = { statusBox.Text, fioBox.Text, emailBox.Text, phoneBox.Text, dataGridView1.CurrentRow.Cells[0].Value.ToString() };
+            string[] newString = { custStatusBox.Text, fioBox.Text, emailBox.Text, phoneBox.Text, dataGridView1.CurrentRow.Cells[0].Value.ToString() };
             bool stringNull = true;
             foreach (string str in newString)
                 if (str == "" || str == "False") stringNull = stringNull && true;
@@ -898,7 +935,7 @@ namespace Filarmony
             else
             {
                 Query upload = new Query();
-                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET status_id = {newString[0]}, fio = \"{newString[1]}\", email = \"{newString[2]}\", phone_number = \"{newString[3]}\" WHERE id = {newString[6]}");
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET status_id = {newString[0]}, fio = \"{newString[1]}\", email = \"{newString[2]}\", phone_number = \"{newString[3]}\" WHERE id = {newString[4]}");
                 Reload(openedTable, columnNames);
                 label15.ForeColor = Color.DarkOrange;
                 label15.Text = "ИЗМЕНЕННО!";
@@ -954,7 +991,6 @@ namespace Filarmony
             roomAddBtn.Visible = true;
             nameBox.Visible = true;
             seatamountBox.Visible = true;
-            roomBackBtn.Visible = true;
         }
         /// <summary>
         /// Добавление полей для изменения записи в room
@@ -979,7 +1015,7 @@ namespace Filarmony
 
             nameBox.Visible = true;
             seatamountBox.Visible = true;
-            custBackBtn.Visible = true;
+            mainBackBtn.Visible = true;
         }
         /// <summary>
         /// Добавление записи в room
@@ -996,16 +1032,16 @@ namespace Filarmony
 
             if (stringNull || IsRowExist(newString))
             {
-                label15.ForeColor = Color.Red;
-                label15.Text = "ОШИБКА!";
+                label17.ForeColor = Color.Red;
+                label17.Text = "ОШИБКА!";
             }
             else
             {
                 Query upload = new Query();
                 MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (name, seats_amount) VALUES (\"{newString[0]}\", {newString[1]})");
                 Reload(openedTable, columnNames);
-                label15.ForeColor = Color.Green;
-                label15.Text = "ДОБАВЛЕНО!";
+                label17.ForeColor = Color.Green;
+                label17.Text = "ДОБАВЛЕНО!";
             }
         }
         /// <summary>
@@ -1023,16 +1059,699 @@ namespace Filarmony
 
             if (stringNull || IsRowExist(newString))
             {
-                label15.ForeColor = Color.Red;
-                label15.Text = "ОШИБКА!";
+                label17.ForeColor = Color.Red;
+                label17.Text = "ОШИБКА!";
             }
             else
             {
                 Query upload = new Query();
-                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET name = \"{newString[0]}\", seats_amount = {newString[1]} WHERE id = {newString[6]}");
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET name = \"{newString[0]}\", seats_amount = {newString[1]} WHERE id = {newString[2]}");
                 Reload(openedTable, columnNames);
-                label15.ForeColor = Color.DarkOrange;
-                label15.Text = "ИЗМЕНЕННО!";
+                label17.ForeColor = Color.DarkOrange;
+                label17.Text = "ИЗМЕНЕННО!";
+            }
+        }
+        /// <summary>
+        /// Скрытие всех элементов управления таблицей при переключении на другую таблицу
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ticketTable_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!ticketTable.Visible)
+            {
+                //changeBack_Click(sender, e);
+                //TableSwitch("back");
+            }
+        }
+
+        private void bookingTable_VisibleChanged(object sender, EventArgs e)
+        {
+            if (!bookingTable.Visible)
+            {
+               // TableSwitch("back");
+                //backBooking_Click(sender, e);
+            }
+        }
+
+        private void roomBox_VisibleChanged(object sender, EventArgs e)
+        {
+            //if (!roomBox.Visible) //roomBackBtn_Click(sender, e);
+                //TableSwitch("back");
+        }
+
+        private void customerBox_VisibleChanged(object sender, EventArgs e)
+        {
+           // if (!customerBox.Visible) //mainBackBtn_Click(sender, e);
+               // TableSwitch("back");
+        }
+
+        private void mainDelBtn_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dataGridView1.CurrentRow;
+            string query = $"DELETE FROM {openedTable} WHERE id = {row.Cells[0].Value}";
+            Query upload = new Query();
+            MySqlDataReader sqList = upload.Upload(query);
+            Reload(openedTable, columnNames);
+        }
+
+        private void mainBackBtn_Click(object sender, EventArgs e)
+        {
+            TableSwitch("back");
+        }
+
+        private void mainAddBtn_Click(object sender, EventArgs e)
+        {
+            List<string> list = new List<string>();
+            this.Height = 650;
+            mainBackBtn.Enabled = true;
+            mainBackBtn.Visible = true;
+            TableSwitch(openedTable);
+            switch (openedTable)
+            {
+                case "booking":
+                    addRowBooking.Visible = true;
+                    addRowBooking.Enabled = true;
+
+                    comboBox1.Items.Clear();
+                    comboBox2.Items.Clear();
+                    comboBox1.Text = "";
+                    comboBox2.Text = "";
+                    dateTimePicker1.Value = DateTime.Now;
+
+                    list = GetIDList("ticket");
+
+                    foreach (string item in list)
+                        comboBox1.Items.Add(item);
+
+                    list = GetIDList("customer");
+
+                    foreach (string item in list)
+                        comboBox2.Items.Add(item);
+
+                    statusLabel.Text = "";
+                    statusLabel.Visible = true;
+                    break;
+                case "ticket":
+                    addRow.Visible = true;
+                    addRow.Enabled = true;
+
+                    concertPos.Items.Clear();
+                    roomPos.Items.Clear();
+                    concertPos.Text = "";
+                    roomPos.Text = "";
+                    rowPos.Text = "";
+                    seatPos.Text = "";
+                    pricePos.Text = "";
+                    checkBox1.Checked = false;
+
+                    list = GetIDList("concert");
+
+                    foreach (string item in list)
+                        concertPos.Items.Add(item);
+
+                    list = GetIDList("room");
+
+                    foreach (string item in list)
+                        roomPos.Items.Add(item);
+
+                    label8.Text = "";
+                    label8.Visible = true;
+                    break;
+                case "customer":
+                    custAddBtn.Visible = true;
+                    custAddBtn.Enabled = true;
+
+                    custStatusBox.Text = "";
+                    fioBox.Text = "";
+                    emailBox.Text = "";
+                    phoneBox.Text = "";
+
+                    label15.Text = "";
+                    label15.Visible = true;
+
+                    custStatusBox.Items.Clear();
+
+                    list = GetIDList("status");
+
+                    foreach (string item in list)
+                        custStatusBox.Items.Add(item);
+                    break;
+                case "room":
+                    roomAddBtn.Visible = true;
+                    roomAddBtn.Enabled = true;
+
+                    nameBox.Text = "";
+                    seatamountBox.Text = "";
+
+                    label17.Text = "";
+                    label17.Visible = true;
+                    break;
+                case "concert":
+                    conAddBtn.Visible = true;
+                    conAddBtn.Enabled = true;
+
+                    conNameBox.Text = "";
+                    shortDiscBox.Text = "";
+                    startDatePicker.Value = DateTime.Now;
+                    endDatePicker.Value = DateTime.Now;
+
+                    concertStatus.Text = "";
+                    concertStatus.Visible = true;
+                    break;
+                case "contract":
+                    contAddBtn.Visible = true;
+                    contAddBtn.Enabled = true;
+
+                    perfBox.Text = "";
+                    contStartPicker.Value = DateTime.Now;
+                    contPrBox.Text = "";
+                    requisBox.Text = "";
+
+                    contractStatus.Text = "";
+                    contractStatus.Visible = true;
+                    break;
+                case "lecture":
+                    lectAddBtn.Visible = true;
+                    lectAddBtn.Enabled = true;
+
+                    lectNameBox.Text = "";
+                    lectStartPicker.Value = DateTime.Now;
+                    lectEndPicker.Value = DateTime.Now;
+
+                    lectStatus.Text = "";
+                    lectStatus.Visible = true;
+                    break;
+                case "mark":
+                    markAddBtn.Enabled = true;
+                    markAddBtn.Visible = true;
+
+                    markNameBox.Text = "";
+                    feedBox.Text = "";
+                    markRatBox.Text = "";
+
+                    markStatus.Text = "";
+                    markStatus.Visible = true;
+                    break;
+                case "status":
+                    statusAddBtn.Enabled = true;
+                    statusAddBtn.Visible = true;
+
+                    statusNameBox.Text = "";
+                    statusSaleBox.Text = "";
+
+                    statusStatus.Text = "";
+                    statusStatus.Visible = true;
+                    break;
+                case "promocode":
+                    promoAddBtn.Enabled = true;
+                    promoAddBtn.Visible = true;
+
+                    promoNameBox.Text = "";
+                    promoSaleBox.Text = "";
+
+                    promoStatus.Text = "";
+                    promoStatus.Visible = true;
+                    break;
+            }
+        }
+
+        private void mainChgBtn_Click(object sender, EventArgs e)
+        {
+            List<string> list = new List<string>();
+            this.Height = 650;
+            mainBackBtn.Enabled = true;
+            mainBackBtn.Visible = true;
+            TableSwitch(openedTable);
+            switch (openedTable)
+            {
+                case "booking":
+                    chgRowBooking.Visible = true;
+                    chgRowBooking.Enabled = true;
+
+                    comboBox1.Items.Clear();
+                    comboBox2.Items.Clear();
+
+                    list = GetIDList("ticket");
+
+                    foreach (string item in list)
+                        comboBox1.Items.Add(item);
+                    comboBox1.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+                    list = GetIDList("customer");
+
+                    foreach (string item in list)
+                        comboBox2.Items.Add(item);
+                    comboBox2.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+
+                    dateTimePicker1.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+
+                    statusLabel.Text = "";
+                    statusLabel.Visible = true;
+                    break;
+                case "ticket":
+                    changebtn.Visible = true;
+                    changebtn.Enabled = true;
+
+                    concertPos.Items.Clear();
+                    roomPos.Items.Clear();
+
+                    list = GetIDList("concert");
+
+                    foreach (string item in list)
+                        concertPos.Items.Add(item);
+                    concertPos.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+                    list = GetIDList("room");
+
+                    foreach (string item in list)
+                        roomPos.Items.Add(item);
+                    roomPos.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+
+                    rowPos.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    seatPos.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+                    pricePos.Text = dataGridView1.CurrentRow.Cells[5].Value.ToString();
+
+                    checkBox1.Checked = dataGridView1.CurrentRow.Cells[6].Value.ToString() == "False" ? false : true;
+
+                    label8.Text = "";
+                    label8.Visible = true;
+
+                    break;
+                case "customer":
+                    custChgBtn.Visible = true;
+                    custChgBtn.Enabled = true;
+
+                    custStatusBox.Items.Clear();
+
+                    list = GetIDList("status");
+
+                    foreach (string item in list)
+                        custStatusBox.Items.Add(item);
+                    custStatusBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+
+                    fioBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    emailBox.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    phoneBox.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+                    label15.Text = "";
+                    label15.Visible = true;
+                    break;
+                case "room":
+                    roomChgBtn.Enabled = true;
+                    roomChgBtn.Visible = true;
+
+                    nameBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    seatamountBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+
+                    label17.Text = "";
+                    label17.Visible = true;
+                    break;
+                case "concert":
+                    conChgBtn.Enabled = true;
+                    conChgBtn.Visible = true;
+
+                    conNameBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    shortDiscBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    startDatePicker.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    endDatePicker.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+                    concertStatus.Text = "";
+                    concertStatus.Visible = true;
+                    break;
+                case "contract":
+                    contChgBtn.Enabled = true;
+                    contChgBtn.Visible = true;
+
+                    perfBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    contStartPicker.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    contPrBox.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    requisBox.Text = dataGridView1.CurrentRow.Cells[4].Value.ToString();
+
+                    contractStatus.Text = "";
+                    contractStatus.Visible = true;
+                    break;
+                case "lecture":
+                    lectAddBtn.Visible = true;
+                    lectAddBtn.Enabled = true;
+
+                    lectNameBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    lectStartPicker.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    lectEndPicker.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+
+                    lectStatus.Text = "";
+                    lectStatus.Visible = true;
+                    break;
+                case "mark":
+                    markChgBtn.Visible = true;
+                    markChgBtn.Enabled = true;
+
+                    markNameBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    feedBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    markRatBox.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
+                    
+                    markStatus.Text = "";
+                    markStatus.Visible = true;
+                    break;
+                case "status":
+                    statusChgBtn.Enabled = true;
+                    statusChgBtn.Visible = true;
+
+                    statusNameBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    statusSaleBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+                    
+                    statusStatus.Text = "";
+                    statusStatus.Visible = true;
+                    break;
+                case "promocode":
+                    promoChgBtn.Enabled = true;
+                    promoChgBtn.Visible = true;
+
+                    promoNameBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
+                    promoSaleBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
+
+                    promoStatus.Text = "";
+                    promoStatus.Visible = true;
+                    break;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            TableSwitch("back");
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("id", "ID");
+            dataGridView1.Columns.Add("name", "Name");
+            dataGridView1.Columns.Add("brief", "Brief");
+            dataGridView1.Columns.Add("start_date", "Start date");
+            dataGridView1.Columns.Add("end_date", "End date");
+
+            columnNames = new List<string> { "id", "name", "brief", "start_date", "end_date" };
+
+            Reload("concert", columnNames);
+
+            dataGridView1.Visible = true;
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+            TableSwitch("back");
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("id", "ID");
+            dataGridView1.Columns.Add("name", "Name");
+            dataGridView1.Columns.Add("start_date", "Start date");
+            dataGridView1.Columns.Add("end_date", "End date");
+
+            columnNames = new List<string> { "id", "name", "start_date", "end_date" };
+
+            Reload("lecture", columnNames);
+
+            dataGridView1.Visible = true;
+
+        }
+
+        private void button9_Click_2(object sender, EventArgs e)
+        {
+            TableSwitch("back");
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("id", "ID");
+            dataGridView1.Columns.Add("name", "Name");
+            dataGridView1.Columns.Add("feedback", "Feedback");
+            dataGridView1.Columns.Add("rating", "Rating");
+
+            columnNames = new List<string> { "id", "name", "feedback", "rating" };
+
+            Reload("mark", columnNames);
+
+            dataGridView1.Visible = true;
+
+        }
+
+        private void button11_Click_1(object sender, EventArgs e)
+        {
+            TableSwitch("back");
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("id", "ID");
+            dataGridView1.Columns.Add("rank", "Rank");
+            dataGridView1.Columns.Add("sale", "Sale");
+
+            columnNames = new List<string> { "id", "rank", "sale" };
+
+            Reload("status", columnNames);
+
+            dataGridView1.Visible = true;
+
+        }
+
+        private void button13_Click(object sender, EventArgs e)
+        {
+            TableSwitch("back");
+
+            dataGridView1.Columns.Clear();
+            dataGridView1.Columns.Add("id", "ID");
+            dataGridView1.Columns.Add("code", "Code");
+            dataGridView1.Columns.Add("sale", "Sale");
+
+            columnNames = new List<string> { "id", "code", "sale" };
+
+            Reload("promocode", columnNames);
+
+            dataGridView1.Visible = true;
+
+        }
+
+        private void conAddBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { conNameBox.Text, shortDiscBox.Text, startDatePicker.Value.ToString("s"), endDatePicker.Value.ToString("s") };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                concertStatus.ForeColor = Color.Red;
+                concertStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (name, brief, start_date, end_date) VALUES (\"{newString[0]}\", \"{newString[1]}\", \"{newString[2]}\", \"{newString[3]}\")");
+                Reload(openedTable, columnNames);
+                concertStatus.ForeColor = Color.Green;
+                concertStatus.Text = "ДОБАВЛЕНО!";
+            }
+        }
+
+        private void conChgBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { conNameBox.Text, shortDiscBox.Text, startDatePicker.Value.ToString("s"), endDatePicker.Value.ToString("s"), dataGridView1.CurrentRow.Cells[0].Value.ToString() };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                concertStatus.ForeColor = Color.Red;
+                concertStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET name = \"{newString[0]}\", brief = \"{newString[1]}\", start_date = \"{newString[2]}\", end_date = \"{newString[3]}\" WHERE id = {newString[4]}");
+                Reload(openedTable, columnNames);
+                concertStatus.ForeColor = Color.DarkOrange;
+                concertStatus.Text = "ИЗМЕНЕННО!";
+            }
+        }
+
+        private void lectAddBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { lectNameBox.Text, lectStartPicker.Value.ToString("s"), lectEndPicker.Value.ToString("s") };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                lectStatus.ForeColor = Color.Red;
+                lectStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (name, start_date, end_date) VALUES (\"{newString[0]}\", \"{newString[1]}\", \"{newString[2]}\")");
+                Reload(openedTable, columnNames);
+                lectStatus.ForeColor = Color.Green;
+                lectStatus.Text = "ДОБАВЛЕНО!";
+            }
+        }
+
+        private void lectChgBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { lectNameBox.Text, lectStartPicker.Value.ToString("s"), lectEndPicker.Value.ToString("s"), dataGridView1.CurrentRow.Cells[0].Value.ToString() };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                lectStatus.ForeColor = Color.Red;
+                lectStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET name = \"{newString[0]}\", start_date = \"{newString[1]}\", end_date = \"{newString[2]}\" WHERE id = {newString[3]}");
+                Reload(openedTable, columnNames);
+                lectStatus.ForeColor = Color.DarkOrange;
+                lectStatus.Text = "ИЗМЕНЕННО!";
+            }
+        }
+
+        private void markAddBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { markNameBox.Text, feedBox.Text, markRatBox.Text };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                markStatus.ForeColor = Color.Red;
+                markStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (name, feedback, rating) VALUES (\"{newString[0]}\", \"{newString[1]}\", \"{newString[2]}\")");
+                Reload(openedTable, columnNames);
+                markStatus.ForeColor = Color.Green;
+                markStatus.Text = "ДОБАВЛЕНО!";
+            }
+        }
+
+        private void markChgBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { markNameBox.Text, feedBox.Text, markRatBox.Text, dataGridView1.CurrentRow.Cells[0].Value.ToString() };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                markStatus.ForeColor = Color.Red;
+                markStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET name = \"{newString[0]}\", feedback = \"{newString[1]}\", rating = \"{newString[2]}\" WHERE id = {newString[3]}");
+                Reload(openedTable, columnNames);
+                markStatus.ForeColor = Color.DarkOrange;
+                markStatus.Text = "ИЗМЕНЕННО!";
+            }
+        }
+
+        private void statusAddBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { statusNameBox.Text, statusSaleBox.Text };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                statusStatus.ForeColor = Color.Red;
+                statusStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (rank, sale) VALUES (\"{newString[0]}\", \"{newString[1]}\")");
+                Reload(openedTable, columnNames);
+                statusStatus.ForeColor = Color.Green;
+                statusStatus.Text = "ДОБАВЛЕНО!";
+            }
+        }
+
+        private void statusChgBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { statusNameBox.Text, statusSaleBox.Text, dataGridView1.CurrentRow.Cells[0].Value.ToString() };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                statusStatus.ForeColor = Color.Red;
+                statusStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET rank = \"{newString[0]}\", sale = \"{newString[1]}\" WHERE id = {newString[2]}");
+                Reload(openedTable, columnNames);
+                statusStatus.ForeColor = Color.DarkOrange;
+                statusStatus.Text = "ИЗМЕНЕННО!";
+            }
+        }
+
+        private void promoAddBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { promoNameBox.Text, promoSaleBox.Text };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                promoStatus.ForeColor = Color.Red;
+                promoStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (code, sale) VALUES (\"{newString[0]}\", \"{newString[1]}\")");
+                Reload(openedTable, columnNames);
+                promoStatus.ForeColor = Color.Green;
+                promoStatus.Text = "ДОБАВЛЕНО!";
+            }
+        }
+
+        private void promoChgBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { promoNameBox.Text, promoSaleBox.Text, dataGridView1.CurrentRow.Cells[0].Value.ToString() };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                promoStatus.ForeColor = Color.Red;
+                promoStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET code = \"{newString[0]}\", sale = \"{newString[1]}\" WHERE id = {newString[2]}");
+                Reload(openedTable, columnNames);
+                promoStatus.ForeColor = Color.DarkOrange;
+                promoStatus.Text = "ИЗМЕНЕННО!";
             }
         }
     }

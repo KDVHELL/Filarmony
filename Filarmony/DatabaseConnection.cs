@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MySql.Data.MySqlClient;
+using System.Windows.Forms;
 
 namespace Filarmony
 {
@@ -31,11 +32,19 @@ namespace Filarmony
         /// <returns></returns>
         public MySqlDataReader data(string sqlQuery)
         {
-            conn.Open();
-            MySqlCommand command = new MySqlCommand(sqlQuery, conn);
+            try
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(sqlQuery, conn);
 
-            reader = command.ExecuteReader();
+                reader = command.ExecuteReader();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("База данных недоступна!");
+            }
             return reader;
+
         }
 
         public void close()
