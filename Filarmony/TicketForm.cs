@@ -10,16 +10,21 @@ using System.Windows.Forms;
 
 namespace Filarmony
 {
-    public partial class MyAccount : Form
+    public partial class TicketForm : Form
     {
-        public MyAccount()
+        public TicketForm()
         {
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cancelBtn_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void TicketForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

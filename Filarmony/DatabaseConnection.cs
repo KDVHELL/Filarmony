@@ -41,7 +41,7 @@ namespace Filarmony
             }
             catch (Exception e)
             {
-                MessageBox.Show("База данных недоступна!");
+                MessageBox.Show($"База данных недоступна!\n{e.Message}");
             }
             return reader;
 

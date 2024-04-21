@@ -1211,10 +1211,17 @@ namespace Filarmony
                     conAddBtn.Visible = true;
                     conAddBtn.Enabled = true;
 
+                    conContIdBox.Items.Clear();
+                    conContIdBox.Text = "";
                     conNameBox.Text = "";
                     shortDiscBox.Text = "";
                     startDatePicker.Value = DateTime.Now;
                     endDatePicker.Value = DateTime.Now;
+
+                    list = GetIDList("contract");
+
+                    foreach (string item in list)
+                        conContIdBox.Items.Add(item);
 
                     concertStatus.Text = "";
                     concertStatus.Visible = true;
@@ -1371,6 +1378,14 @@ namespace Filarmony
                     conChgBtn.Enabled = true;
                     conChgBtn.Visible = true;
 
+                    conContIdBox.Items.Clear();
+
+                    list = GetIDList("contract");
+
+                    foreach (string item in list)
+                        conContIdBox.Items.Add(item);
+
+                    conContIdBox.Text = dataGridView1.CurrentRow.Cells[0].Value.ToString();
                     conNameBox.Text = dataGridView1.CurrentRow.Cells[1].Value.ToString();
                     shortDiscBox.Text = dataGridView1.CurrentRow.Cells[2].Value.ToString();
                     startDatePicker.Text = dataGridView1.CurrentRow.Cells[3].Value.ToString();
@@ -1527,7 +1542,7 @@ namespace Filarmony
 
         private void conAddBtn_Click(object sender, EventArgs e)
         {
-            string[] newString = { conNameBox.Text, shortDiscBox.Text, startDatePicker.Value.ToString("s"), endDatePicker.Value.ToString("s") };
+            string[] newString = { conContIdBox.Text, conNameBox.Text, shortDiscBox.Text, startDatePicker.Value.ToString("s"), endDatePicker.Value.ToString("s") };
             bool stringNull = true;
             foreach (string str in newString)
                 if (str == "" || str == "False") stringNull = stringNull && true;
@@ -1541,7 +1556,7 @@ namespace Filarmony
             else
             {
                 Query upload = new Query();
-                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (name, brief, start_date, end_date) VALUES (\"{newString[0]}\", \"{newString[1]}\", \"{newString[2]}\", \"{newString[3]}\")");
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (id, name, brief, start_date, end_date) VALUES ({newString[0]}, \"{newString[1]}\", \"{newString[2]}\", \"{newString[3]}\", \"{newString[4]}\")");
                 Reload(openedTable, columnNames);
                 concertStatus.ForeColor = Color.Green;
                 concertStatus.Text = "ДОБАВЛЕНО!";
@@ -1749,6 +1764,52 @@ namespace Filarmony
             {
                 Query upload = new Query();
                 MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET code = \"{newString[0]}\", sale = \"{newString[1]}\" WHERE id = {newString[2]}");
+                Reload(openedTable, columnNames);
+                promoStatus.ForeColor = Color.DarkOrange;
+                promoStatus.Text = "ИЗМЕНЕННО!";
+            }
+        }
+
+        private void contAddBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { perfBox.Text, contStartPicker.Value.ToString("s"), contPrBox.Text, requisBox.Text };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                contractStatus.ForeColor = Color.Red;
+                contractStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"INSERT INTO {openedTable} (performer, event_date, price, requisites) VALUES (\"{newString[0]}\", \"{newString[1]}\", {newString[2]}, \"{newString[3]}\")");
+                Reload(openedTable, columnNames);
+                contractStatus.ForeColor = Color.Green;
+                contractStatus.Text = "ДОБАВЛЕНО!";
+            }
+        }
+
+        private void contChgBtn_Click(object sender, EventArgs e)
+        {
+            string[] newString = { perfBox.Text, contStartPicker.Value.ToString("s"), contPrBox.Text, requisBox.Text, dataGridView1.CurrentRow.Cells[0].Value.ToString() };
+            bool stringNull = true;
+            foreach (string str in newString)
+                if (str == "" || str == "False") stringNull = stringNull && true;
+                else stringNull = stringNull && false;
+
+            if (stringNull || IsRowExist(newString))
+            {
+                promoStatus.ForeColor = Color.Red;
+                promoStatus.Text = "ОШИБКА!";
+            }
+            else
+            {
+                Query upload = new Query();
+                MySqlDataReader sqList = upload.Upload($"UPDATE {openedTable} SET performer = \"{newString[0]}\", event_date = \"{newString[1]}\", price = {newString[2]}, requisites = \"{newString[3]}\" WHERE id = {newString[4]}");
                 Reload(openedTable, columnNames);
                 promoStatus.ForeColor = Color.DarkOrange;
                 promoStatus.Text = "ИЗМЕНЕННО!";

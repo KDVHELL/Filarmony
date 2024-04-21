@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem(new string[] {
             "Концерт 1",
             "Зал 2",
             "Ряд: 1",
@@ -153,9 +153,11 @@
             this.listView1.FullRowSelect = true;
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.listView1.Location = new System.Drawing.Point(44, 323);
             this.listView1.Name = "listView1";
+            this.listView1.ShowGroups = false;
+            this.listView1.ShowItemToolTips = true;
             this.listView1.Size = new System.Drawing.Size(718, 194);
             this.listView1.TabIndex = 9;
             this.listView1.TileSize = new System.Drawing.Size(400, 170);
@@ -182,6 +184,7 @@
             this.button1.TabIndex = 11;
             this.button1.Text = "Закрыть";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 

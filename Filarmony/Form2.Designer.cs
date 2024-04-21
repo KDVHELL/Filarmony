@@ -58,9 +58,9 @@
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.addRowBooking = new System.Windows.Forms.Button();
             this.chgRowBooking = new System.Windows.Forms.Button();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
             this.requestBox = new System.Windows.Forms.GroupBox();
             this.button7 = new System.Windows.Forms.Button();
             this.buyTicketInfo = new System.Windows.Forms.Button();
@@ -86,28 +86,30 @@
             this.seatamountBox = new System.Windows.Forms.RichTextBox();
             this.nameBox = new System.Windows.Forms.RichTextBox();
             this.nameLab = new System.Windows.Forms.Label();
-            this.roomChgBtn = new System.Windows.Forms.Button();
             this.roomAddBtn = new System.Windows.Forms.Button();
+            this.roomChgBtn = new System.Windows.Forms.Button();
             this.button11 = new System.Windows.Forms.Button();
             this.button13 = new System.Windows.Forms.Button();
             this.mainDelBtn = new System.Windows.Forms.Button();
             this.mainAddBtn = new System.Windows.Forms.Button();
             this.mainChgBtn = new System.Windows.Forms.Button();
             this.concertBox = new System.Windows.Forms.GroupBox();
+            this.endDatePicker = new System.Windows.Forms.DateTimePicker();
+            this.endDateLab = new System.Windows.Forms.Label();
+            this.shortDiscBox = new System.Windows.Forms.RichTextBox();
+            this.conNameBox = new System.Windows.Forms.TextBox();
             this.concertStatus = new System.Windows.Forms.Label();
             this.startDatePicker = new System.Windows.Forms.DateTimePicker();
             this.startDateLab = new System.Windows.Forms.Label();
             this.shortDiscLab = new System.Windows.Forms.Label();
             this.conNameLab = new System.Windows.Forms.Label();
-            this.conAddBtn = new System.Windows.Forms.Button();
             this.conChgBtn = new System.Windows.Forms.Button();
-            this.conNameBox = new System.Windows.Forms.TextBox();
-            this.shortDiscBox = new System.Windows.Forms.RichTextBox();
-            this.endDatePicker = new System.Windows.Forms.DateTimePicker();
-            this.endDateLab = new System.Windows.Forms.Label();
+            this.conAddBtn = new System.Windows.Forms.Button();
             this.contractBox = new System.Windows.Forms.GroupBox();
+            this.contPrBox = new System.Windows.Forms.TextBox();
             this.contStartPicker = new System.Windows.Forms.DateTimePicker();
             this.contStartLab = new System.Windows.Forms.Label();
+            this.requisBox = new System.Windows.Forms.RichTextBox();
             this.perfBox = new System.Windows.Forms.TextBox();
             this.contractStatus = new System.Windows.Forms.Label();
             this.contrPrLab = new System.Windows.Forms.Label();
@@ -115,9 +117,9 @@
             this.perfLab = new System.Windows.Forms.Label();
             this.contChgBtn = new System.Windows.Forms.Button();
             this.contAddBtn = new System.Windows.Forms.Button();
-            this.requisBox = new System.Windows.Forms.RichTextBox();
-            this.contPrBox = new System.Windows.Forms.TextBox();
             this.lectureBox = new System.Windows.Forms.GroupBox();
+            this.lectEndPicker = new System.Windows.Forms.DateTimePicker();
+            this.lectEndLab = new System.Windows.Forms.Label();
             this.lectStartPicker = new System.Windows.Forms.DateTimePicker();
             this.lectStartLab = new System.Windows.Forms.Label();
             this.lectNameBox = new System.Windows.Forms.TextBox();
@@ -125,18 +127,16 @@
             this.lectNameLab = new System.Windows.Forms.Label();
             this.lectChgBtn = new System.Windows.Forms.Button();
             this.lectAddBtn = new System.Windows.Forms.Button();
-            this.lectEndPicker = new System.Windows.Forms.DateTimePicker();
-            this.lectEndLab = new System.Windows.Forms.Label();
             this.markBox = new System.Windows.Forms.GroupBox();
+            this.feedBox = new System.Windows.Forms.RichTextBox();
+            this.feedLab = new System.Windows.Forms.Label();
+            this.markRatBox = new System.Windows.Forms.TextBox();
+            this.markRatLab = new System.Windows.Forms.Label();
             this.markNameBox = new System.Windows.Forms.TextBox();
             this.markStatus = new System.Windows.Forms.Label();
             this.markNameLab = new System.Windows.Forms.Label();
             this.markChgBtn = new System.Windows.Forms.Button();
             this.markAddBtn = new System.Windows.Forms.Button();
-            this.markRatBox = new System.Windows.Forms.TextBox();
-            this.markRatLab = new System.Windows.Forms.Label();
-            this.feedLab = new System.Windows.Forms.Label();
-            this.feedBox = new System.Windows.Forms.RichTextBox();
             this.statusBox = new System.Windows.Forms.GroupBox();
             this.statusSaleBox = new System.Windows.Forms.TextBox();
             this.statusSaleLab = new System.Windows.Forms.Label();
@@ -151,8 +151,10 @@
             this.promoNameBox = new System.Windows.Forms.TextBox();
             this.promoStatus = new System.Windows.Forms.Label();
             this.promoNameLab = new System.Windows.Forms.Label();
-            this.promoChgBtn = new System.Windows.Forms.Button();
             this.promoAddBtn = new System.Windows.Forms.Button();
+            this.promoChgBtn = new System.Windows.Forms.Button();
+            this.conContIdLab = new System.Windows.Forms.Label();
+            this.conContIdBox = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.ticketTable.SuspendLayout();
             this.bookingTable.SuspendLayout();
@@ -557,6 +559,16 @@
             this.label11.TabIndex = 4;
             this.label11.Text = "Билет:";
             // 
+            // comboBox2
+            // 
+            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(244, 154);
+            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(296, 30);
+            this.comboBox2.TabIndex = 9;
+            // 
             // addRowBooking
             // 
             this.addRowBooking.BackColor = System.Drawing.Color.MediumSpringGreen;
@@ -584,16 +596,6 @@
             this.chgRowBooking.UseVisualStyleBackColor = false;
             this.chgRowBooking.Visible = false;
             this.chgRowBooking.Click += new System.EventHandler(this.chgRowBooking_Click);
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(244, 154);
-            this.comboBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(296, 30);
-            this.comboBox2.TabIndex = 9;
             // 
             // requestBox
             // 
@@ -921,20 +923,6 @@
             this.nameLab.TabIndex = 21;
             this.nameLab.Text = "Название:";
             // 
-            // roomChgBtn
-            // 
-            this.roomChgBtn.BackColor = System.Drawing.Color.Yellow;
-            this.roomChgBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.roomChgBtn.Location = new System.Drawing.Point(667, 92);
-            this.roomChgBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.roomChgBtn.Name = "roomChgBtn";
-            this.roomChgBtn.Size = new System.Drawing.Size(316, 135);
-            this.roomChgBtn.TabIndex = 31;
-            this.roomChgBtn.Text = "Изменить запись";
-            this.roomChgBtn.UseVisualStyleBackColor = false;
-            this.roomChgBtn.Visible = false;
-            this.roomChgBtn.Click += new System.EventHandler(this.roomChgBtn_Click);
-            // 
             // roomAddBtn
             // 
             this.roomAddBtn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -948,6 +936,20 @@
             this.roomAddBtn.UseVisualStyleBackColor = false;
             this.roomAddBtn.Visible = false;
             this.roomAddBtn.Click += new System.EventHandler(this.roomAddBtn_Click);
+            // 
+            // roomChgBtn
+            // 
+            this.roomChgBtn.BackColor = System.Drawing.Color.Yellow;
+            this.roomChgBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.roomChgBtn.Location = new System.Drawing.Point(667, 92);
+            this.roomChgBtn.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.roomChgBtn.Name = "roomChgBtn";
+            this.roomChgBtn.Size = new System.Drawing.Size(316, 135);
+            this.roomChgBtn.TabIndex = 31;
+            this.roomChgBtn.Text = "Изменить запись";
+            this.roomChgBtn.UseVisualStyleBackColor = false;
+            this.roomChgBtn.Visible = false;
+            this.roomChgBtn.Click += new System.EventHandler(this.roomChgBtn_Click);
             // 
             // button11
             // 
@@ -1019,6 +1021,8 @@
             // 
             this.concertBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.concertBox.Controls.Add(this.conContIdBox);
+            this.concertBox.Controls.Add(this.conContIdLab);
             this.concertBox.Controls.Add(this.endDatePicker);
             this.concertBox.Controls.Add(this.endDateLab);
             this.concertBox.Controls.Add(this.shortDiscBox);
@@ -1028,8 +1032,8 @@
             this.concertBox.Controls.Add(this.startDateLab);
             this.concertBox.Controls.Add(this.shortDiscLab);
             this.concertBox.Controls.Add(this.conNameLab);
-            this.concertBox.Controls.Add(this.conChgBtn);
             this.concertBox.Controls.Add(this.conAddBtn);
+            this.concertBox.Controls.Add(this.conChgBtn);
             this.concertBox.Enabled = false;
             this.concertBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.concertBox.Location = new System.Drawing.Point(4, 319);
@@ -1040,6 +1044,46 @@
             this.concertBox.TabIndex = 34;
             this.concertBox.TabStop = false;
             this.concertBox.Visible = false;
+            // 
+            // endDatePicker
+            // 
+            this.endDatePicker.CustomFormat = "";
+            this.endDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.endDatePicker.Location = new System.Drawing.Point(244, 285);
+            this.endDatePicker.Margin = new System.Windows.Forms.Padding(4);
+            this.endDatePicker.MaxDate = new System.DateTime(2029, 12, 31, 0, 0, 0, 0);
+            this.endDatePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.endDatePicker.Name = "endDatePicker";
+            this.endDatePicker.Size = new System.Drawing.Size(296, 28);
+            this.endDatePicker.TabIndex = 17;
+            this.endDatePicker.Value = new System.DateTime(2023, 12, 14, 21, 3, 23, 0);
+            // 
+            // endDateLab
+            // 
+            this.endDateLab.AutoSize = true;
+            this.endDateLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.endDateLab.Location = new System.Drawing.Point(36, 283);
+            this.endDateLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.endDateLab.Name = "endDateLab";
+            this.endDateLab.Size = new System.Drawing.Size(148, 29);
+            this.endDateLab.TabIndex = 16;
+            this.endDateLab.Text = "Дата конца:";
+            // 
+            // shortDiscBox
+            // 
+            this.shortDiscBox.Location = new System.Drawing.Point(244, 116);
+            this.shortDiscBox.Name = "shortDiscBox";
+            this.shortDiscBox.Size = new System.Drawing.Size(296, 96);
+            this.shortDiscBox.TabIndex = 15;
+            this.shortDiscBox.Text = "";
+            // 
+            // conNameBox
+            // 
+            this.conNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.conNameBox.Location = new System.Drawing.Point(245, 72);
+            this.conNameBox.Name = "conNameBox";
+            this.conNameBox.Size = new System.Drawing.Size(296, 30);
+            this.conNameBox.TabIndex = 14;
             // 
             // concertStatus
             // 
@@ -1057,7 +1101,7 @@
             // 
             this.startDatePicker.CustomFormat = "";
             this.startDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.startDatePicker.Location = new System.Drawing.Point(244, 238);
+            this.startDatePicker.Location = new System.Drawing.Point(244, 241);
             this.startDatePicker.Margin = new System.Windows.Forms.Padding(4);
             this.startDatePicker.MaxDate = new System.DateTime(2029, 12, 31, 0, 0, 0, 0);
             this.startDatePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
@@ -1070,7 +1114,7 @@
             // 
             this.startDateLab.AutoSize = true;
             this.startDateLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.startDateLab.Location = new System.Drawing.Point(36, 236);
+            this.startDateLab.Location = new System.Drawing.Point(36, 239);
             this.startDateLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.startDateLab.Name = "startDateLab";
             this.startDateLab.Size = new System.Drawing.Size(161, 29);
@@ -1081,7 +1125,7 @@
             // 
             this.shortDiscLab.AutoSize = true;
             this.shortDiscLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.shortDiscLab.Location = new System.Drawing.Point(36, 106);
+            this.shortDiscLab.Location = new System.Drawing.Point(36, 109);
             this.shortDiscLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.shortDiscLab.Name = "shortDiscLab";
             this.shortDiscLab.Size = new System.Drawing.Size(173, 29);
@@ -1092,26 +1136,12 @@
             // 
             this.conNameLab.AutoSize = true;
             this.conNameLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.conNameLab.Location = new System.Drawing.Point(36, 35);
+            this.conNameLab.Location = new System.Drawing.Point(37, 65);
             this.conNameLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.conNameLab.Name = "conNameLab";
             this.conNameLab.Size = new System.Drawing.Size(128, 29);
             this.conNameLab.TabIndex = 4;
             this.conNameLab.Text = "Название:";
-            // 
-            // conAddBtn
-            // 
-            this.conAddBtn.BackColor = System.Drawing.Color.MediumSpringGreen;
-            this.conAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.conAddBtn.Location = new System.Drawing.Point(661, 90);
-            this.conAddBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.conAddBtn.Name = "conAddBtn";
-            this.conAddBtn.Size = new System.Drawing.Size(316, 135);
-            this.conAddBtn.TabIndex = 11;
-            this.conAddBtn.Text = "Добавить запись";
-            this.conAddBtn.UseVisualStyleBackColor = false;
-            this.conAddBtn.Visible = false;
-            this.conAddBtn.Click += new System.EventHandler(this.conAddBtn_Click);
             // 
             // conChgBtn
             // 
@@ -1127,45 +1157,19 @@
             this.conChgBtn.Visible = false;
             this.conChgBtn.Click += new System.EventHandler(this.conChgBtn_Click);
             // 
-            // conNameBox
+            // conAddBtn
             // 
-            this.conNameBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.conNameBox.Location = new System.Drawing.Point(244, 42);
-            this.conNameBox.Name = "conNameBox";
-            this.conNameBox.Size = new System.Drawing.Size(296, 30);
-            this.conNameBox.TabIndex = 14;
-            // 
-            // shortDiscBox
-            // 
-            this.shortDiscBox.Location = new System.Drawing.Point(244, 113);
-            this.shortDiscBox.Name = "shortDiscBox";
-            this.shortDiscBox.Size = new System.Drawing.Size(296, 96);
-            this.shortDiscBox.TabIndex = 15;
-            this.shortDiscBox.Text = "";
-            // 
-            // endDatePicker
-            // 
-            this.endDatePicker.CustomFormat = "";
-            this.endDatePicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.endDatePicker.Location = new System.Drawing.Point(244, 282);
-            this.endDatePicker.Margin = new System.Windows.Forms.Padding(4);
-            this.endDatePicker.MaxDate = new System.DateTime(2029, 12, 31, 0, 0, 0, 0);
-            this.endDatePicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.endDatePicker.Name = "endDatePicker";
-            this.endDatePicker.Size = new System.Drawing.Size(296, 28);
-            this.endDatePicker.TabIndex = 17;
-            this.endDatePicker.Value = new System.DateTime(2023, 12, 14, 21, 3, 23, 0);
-            // 
-            // endDateLab
-            // 
-            this.endDateLab.AutoSize = true;
-            this.endDateLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.endDateLab.Location = new System.Drawing.Point(36, 280);
-            this.endDateLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.endDateLab.Name = "endDateLab";
-            this.endDateLab.Size = new System.Drawing.Size(148, 29);
-            this.endDateLab.TabIndex = 16;
-            this.endDateLab.Text = "Дата конца:";
+            this.conAddBtn.BackColor = System.Drawing.Color.MediumSpringGreen;
+            this.conAddBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.conAddBtn.Location = new System.Drawing.Point(661, 90);
+            this.conAddBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.conAddBtn.Name = "conAddBtn";
+            this.conAddBtn.Size = new System.Drawing.Size(316, 135);
+            this.conAddBtn.TabIndex = 11;
+            this.conAddBtn.Text = "Добавить запись";
+            this.conAddBtn.UseVisualStyleBackColor = false;
+            this.conAddBtn.Visible = false;
+            this.conAddBtn.Click += new System.EventHandler(this.conAddBtn_Click);
             // 
             // contractBox
             // 
@@ -1180,8 +1184,8 @@
             this.contractBox.Controls.Add(this.contrPrLab);
             this.contractBox.Controls.Add(this.requisLab);
             this.contractBox.Controls.Add(this.perfLab);
-            this.contractBox.Controls.Add(this.contChgBtn);
             this.contractBox.Controls.Add(this.contAddBtn);
+            this.contractBox.Controls.Add(this.contChgBtn);
             this.contractBox.Enabled = false;
             this.contractBox.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.contractBox.Location = new System.Drawing.Point(4, 319);
@@ -1192,6 +1196,14 @@
             this.contractBox.TabIndex = 35;
             this.contractBox.TabStop = false;
             this.contractBox.Visible = false;
+            // 
+            // contPrBox
+            // 
+            this.contPrBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.contPrBox.Location = new System.Drawing.Point(244, 162);
+            this.contPrBox.Name = "contPrBox";
+            this.contPrBox.Size = new System.Drawing.Size(296, 30);
+            this.contPrBox.TabIndex = 18;
             // 
             // contStartPicker
             // 
@@ -1216,6 +1228,14 @@
             this.contStartLab.Size = new System.Drawing.Size(161, 29);
             this.contStartLab.TabIndex = 16;
             this.contStartLab.Text = "Дата начала:";
+            // 
+            // requisBox
+            // 
+            this.requisBox.Location = new System.Drawing.Point(244, 230);
+            this.requisBox.Name = "requisBox";
+            this.requisBox.Size = new System.Drawing.Size(296, 96);
+            this.requisBox.TabIndex = 15;
+            this.requisBox.Text = "";
             // 
             // perfBox
             // 
@@ -1282,6 +1302,7 @@
             this.contChgBtn.Text = "Изменить запись";
             this.contChgBtn.UseVisualStyleBackColor = false;
             this.contChgBtn.Visible = false;
+            this.contChgBtn.Click += new System.EventHandler(this.contChgBtn_Click);
             // 
             // contAddBtn
             // 
@@ -1295,22 +1316,7 @@
             this.contAddBtn.Text = "Добавить запись";
             this.contAddBtn.UseVisualStyleBackColor = false;
             this.contAddBtn.Visible = false;
-            // 
-            // requisBox
-            // 
-            this.requisBox.Location = new System.Drawing.Point(244, 230);
-            this.requisBox.Name = "requisBox";
-            this.requisBox.Size = new System.Drawing.Size(296, 96);
-            this.requisBox.TabIndex = 15;
-            this.requisBox.Text = "";
-            // 
-            // contPrBox
-            // 
-            this.contPrBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.contPrBox.Location = new System.Drawing.Point(244, 162);
-            this.contPrBox.Name = "contPrBox";
-            this.contPrBox.Size = new System.Drawing.Size(296, 30);
-            this.contPrBox.TabIndex = 18;
+            this.contAddBtn.Click += new System.EventHandler(this.contAddBtn_Click);
             // 
             // lectureBox
             // 
@@ -1335,6 +1341,30 @@
             this.lectureBox.TabIndex = 36;
             this.lectureBox.TabStop = false;
             this.lectureBox.Visible = false;
+            // 
+            // lectEndPicker
+            // 
+            this.lectEndPicker.CustomFormat = "";
+            this.lectEndPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lectEndPicker.Location = new System.Drawing.Point(243, 163);
+            this.lectEndPicker.Margin = new System.Windows.Forms.Padding(4);
+            this.lectEndPicker.MaxDate = new System.DateTime(2029, 12, 31, 0, 0, 0, 0);
+            this.lectEndPicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
+            this.lectEndPicker.Name = "lectEndPicker";
+            this.lectEndPicker.Size = new System.Drawing.Size(296, 28);
+            this.lectEndPicker.TabIndex = 19;
+            this.lectEndPicker.Value = new System.DateTime(2023, 12, 14, 21, 3, 23, 0);
+            // 
+            // lectEndLab
+            // 
+            this.lectEndLab.AutoSize = true;
+            this.lectEndLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lectEndLab.Location = new System.Drawing.Point(35, 161);
+            this.lectEndLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lectEndLab.Name = "lectEndLab";
+            this.lectEndLab.Size = new System.Drawing.Size(148, 29);
+            this.lectEndLab.TabIndex = 18;
+            this.lectEndLab.Text = "Дата конца:";
             // 
             // lectStartPicker
             // 
@@ -1419,30 +1449,6 @@
             this.lectAddBtn.Visible = false;
             this.lectAddBtn.Click += new System.EventHandler(this.lectAddBtn_Click);
             // 
-            // lectEndPicker
-            // 
-            this.lectEndPicker.CustomFormat = "";
-            this.lectEndPicker.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lectEndPicker.Location = new System.Drawing.Point(243, 163);
-            this.lectEndPicker.Margin = new System.Windows.Forms.Padding(4);
-            this.lectEndPicker.MaxDate = new System.DateTime(2029, 12, 31, 0, 0, 0, 0);
-            this.lectEndPicker.MinDate = new System.DateTime(2000, 1, 1, 0, 0, 0, 0);
-            this.lectEndPicker.Name = "lectEndPicker";
-            this.lectEndPicker.Size = new System.Drawing.Size(296, 28);
-            this.lectEndPicker.TabIndex = 19;
-            this.lectEndPicker.Value = new System.DateTime(2023, 12, 14, 21, 3, 23, 0);
-            // 
-            // lectEndLab
-            // 
-            this.lectEndLab.AutoSize = true;
-            this.lectEndLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lectEndLab.Location = new System.Drawing.Point(35, 161);
-            this.lectEndLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lectEndLab.Name = "lectEndLab";
-            this.lectEndLab.Size = new System.Drawing.Size(148, 29);
-            this.lectEndLab.TabIndex = 18;
-            this.lectEndLab.Text = "Дата конца:";
-            // 
             // markBox
             // 
             this.markBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1466,6 +1472,44 @@
             this.markBox.TabIndex = 37;
             this.markBox.TabStop = false;
             this.markBox.Visible = false;
+            // 
+            // feedBox
+            // 
+            this.feedBox.Location = new System.Drawing.Point(209, 94);
+            this.feedBox.Name = "feedBox";
+            this.feedBox.Size = new System.Drawing.Size(295, 96);
+            this.feedBox.TabIndex = 18;
+            this.feedBox.Text = "";
+            // 
+            // feedLab
+            // 
+            this.feedLab.AutoSize = true;
+            this.feedLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.feedLab.Location = new System.Drawing.Point(37, 91);
+            this.feedLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.feedLab.Name = "feedLab";
+            this.feedLab.Size = new System.Drawing.Size(91, 29);
+            this.feedLab.TabIndex = 17;
+            this.feedLab.Text = "Отзыв:";
+            // 
+            // markRatBox
+            // 
+            this.markRatBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.markRatBox.Location = new System.Drawing.Point(208, 215);
+            this.markRatBox.Name = "markRatBox";
+            this.markRatBox.Size = new System.Drawing.Size(296, 30);
+            this.markRatBox.TabIndex = 16;
+            // 
+            // markRatLab
+            // 
+            this.markRatLab.AutoSize = true;
+            this.markRatLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.markRatLab.Location = new System.Drawing.Point(36, 216);
+            this.markRatLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.markRatLab.Name = "markRatLab";
+            this.markRatLab.Size = new System.Drawing.Size(103, 29);
+            this.markRatLab.TabIndex = 15;
+            this.markRatLab.Text = "Оценка:";
             // 
             // markNameBox
             // 
@@ -1525,44 +1569,6 @@
             this.markAddBtn.UseVisualStyleBackColor = false;
             this.markAddBtn.Visible = false;
             this.markAddBtn.Click += new System.EventHandler(this.markAddBtn_Click);
-            // 
-            // markRatBox
-            // 
-            this.markRatBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.markRatBox.Location = new System.Drawing.Point(208, 215);
-            this.markRatBox.Name = "markRatBox";
-            this.markRatBox.Size = new System.Drawing.Size(296, 30);
-            this.markRatBox.TabIndex = 16;
-            // 
-            // markRatLab
-            // 
-            this.markRatLab.AutoSize = true;
-            this.markRatLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.markRatLab.Location = new System.Drawing.Point(36, 216);
-            this.markRatLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.markRatLab.Name = "markRatLab";
-            this.markRatLab.Size = new System.Drawing.Size(103, 29);
-            this.markRatLab.TabIndex = 15;
-            this.markRatLab.Text = "Оценка:";
-            // 
-            // feedLab
-            // 
-            this.feedLab.AutoSize = true;
-            this.feedLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.feedLab.Location = new System.Drawing.Point(37, 91);
-            this.feedLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.feedLab.Name = "feedLab";
-            this.feedLab.Size = new System.Drawing.Size(91, 29);
-            this.feedLab.TabIndex = 17;
-            this.feedLab.Text = "Отзыв:";
-            // 
-            // feedBox
-            // 
-            this.feedBox.Location = new System.Drawing.Point(209, 94);
-            this.feedBox.Name = "feedBox";
-            this.feedBox.Size = new System.Drawing.Size(295, 96);
-            this.feedBox.TabIndex = 18;
-            this.feedBox.Text = "";
             // 
             // statusBox
             // 
@@ -1736,20 +1742,6 @@
             this.promoNameLab.TabIndex = 4;
             this.promoNameLab.Text = "Название:";
             // 
-            // promoChgBtn
-            // 
-            this.promoChgBtn.BackColor = System.Drawing.Color.Yellow;
-            this.promoChgBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.promoChgBtn.Location = new System.Drawing.Point(661, 90);
-            this.promoChgBtn.Margin = new System.Windows.Forms.Padding(4);
-            this.promoChgBtn.Name = "promoChgBtn";
-            this.promoChgBtn.Size = new System.Drawing.Size(316, 135);
-            this.promoChgBtn.TabIndex = 12;
-            this.promoChgBtn.Text = "Изменить запись";
-            this.promoChgBtn.UseVisualStyleBackColor = false;
-            this.promoChgBtn.Visible = false;
-            this.promoChgBtn.Click += new System.EventHandler(this.promoChgBtn_Click);
-            // 
             // promoAddBtn
             // 
             this.promoAddBtn.BackColor = System.Drawing.Color.MediumSpringGreen;
@@ -1764,11 +1756,45 @@
             this.promoAddBtn.Visible = false;
             this.promoAddBtn.Click += new System.EventHandler(this.promoAddBtn_Click);
             // 
+            // promoChgBtn
+            // 
+            this.promoChgBtn.BackColor = System.Drawing.Color.Yellow;
+            this.promoChgBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.promoChgBtn.Location = new System.Drawing.Point(661, 90);
+            this.promoChgBtn.Margin = new System.Windows.Forms.Padding(4);
+            this.promoChgBtn.Name = "promoChgBtn";
+            this.promoChgBtn.Size = new System.Drawing.Size(316, 135);
+            this.promoChgBtn.TabIndex = 12;
+            this.promoChgBtn.Text = "Изменить запись";
+            this.promoChgBtn.UseVisualStyleBackColor = false;
+            this.promoChgBtn.Visible = false;
+            this.promoChgBtn.Click += new System.EventHandler(this.promoChgBtn_Click);
+            // 
+            // conContIdLab
+            // 
+            this.conContIdLab.AutoSize = true;
+            this.conContIdLab.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.conContIdLab.Location = new System.Drawing.Point(37, 17);
+            this.conContIdLab.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.conContIdLab.Name = "conContIdLab";
+            this.conContIdLab.Size = new System.Drawing.Size(163, 29);
+            this.conContIdLab.TabIndex = 18;
+            this.conContIdLab.Text = "ID контракта:";
+            // 
+            // conContIdBox
+            // 
+            this.conContIdBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.conContIdBox.FormattingEnabled = true;
+            this.conContIdBox.Location = new System.Drawing.Point(245, 22);
+            this.conContIdBox.Name = "conContIdBox";
+            this.conContIdBox.Size = new System.Drawing.Size(295, 33);
+            this.conContIdBox.TabIndex = 19;
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1100, 321);
+            this.ClientSize = new System.Drawing.Size(1100, 607);
             this.Controls.Add(this.mainBackBtn);
             this.Controls.Add(this.mainDelBtn);
             this.Controls.Add(this.button13);
@@ -1785,6 +1811,9 @@
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.contractBox);
+            this.Controls.Add(this.concertBox);
+            this.Controls.Add(this.bookingTable);
             this.Controls.Add(this.requestBox);
             this.Controls.Add(this.roomBox);
             this.Controls.Add(this.customerBox);
@@ -1793,9 +1822,6 @@
             this.Controls.Add(this.statusBox);
             this.Controls.Add(this.markBox);
             this.Controls.Add(this.lectureBox);
-            this.Controls.Add(this.contractBox);
-            this.Controls.Add(this.concertBox);
-            this.Controls.Add(this.bookingTable);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Form2";
             this.Text = "Администратор";
@@ -1952,5 +1978,7 @@
         private System.Windows.Forms.Label promoNameLab;
         private System.Windows.Forms.Button promoAddBtn;
         private System.Windows.Forms.Button promoChgBtn;
+        private System.Windows.Forms.Label conContIdLab;
+        private System.Windows.Forms.ComboBox conContIdBox;
     }
 }
